@@ -3,12 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   fetch('https://web3lagosbackend.onrender.com/api/speaker-registrations/')
     .then(response => {
+      console.log('Fetch response:', response); // Log the response
       if (!response.ok) {
         throw new Error('Network response was not ok ' + response.statusText);
       }
       return response.json();
     })
     .then(data => {
+      console.log('Data received:', data); // Log the received data
       if (Array.isArray(data)) {
         data.forEach(speaker => {
           const card = document.createElement('div');
