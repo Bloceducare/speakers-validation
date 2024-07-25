@@ -14,11 +14,18 @@ document.addEventListener('DOMContentLoaded', () => {
           const card = document.createElement('div');
           card.className = 'card';
 
+          const fullName = `${speaker.firstname || ''} ${speaker.other_name || ''} ${speaker.last_name || ''}`.trim();
+          const profilePic = speaker.profilepicurl || 'default-image-url.jpg';
+          const company = speaker.company_name || 'No Company Provided';
+          const lectureTitle = speaker.lecture_title || 'No Lecture Title Provided';
+          const bio = speaker.pitch_story || 'No Bio Provided';
+
           card.innerHTML = `
-            <img src="${speaker.imageUrl || 'default-image-url.jpg'}" alt="${speaker.name}">
-            <h3>${speaker.name || 'No Name Provided'}</h3>
-            <p>${speaker.title || 'No Title Provided'}</p>
-            <p>${speaker.bio || 'No Bio Provided'}</p>
+            <img src="${profilePic}" alt="${fullName}">
+            <h3>${fullName}</h3>
+            <p><strong>Company:</strong> ${company}</p>
+            <p><strong>Lecture:</strong> ${lectureTitle}</p>
+            <p>${bio}</p>
           `;
 
           speakersContainer.appendChild(card);
